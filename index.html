@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" />
+    <link rel="icon" type="image/png" href="https://github.com/eusoumanoelnetto/marido-de-aluguel-carioca/blob/main/public/assets/favicon.png?raw=true" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marido de Aluguel Carioca - Reparos Domésticos no Rio</title>
 
@@ -518,10 +518,10 @@
             });
         });
         
-        // Mobile phone toggle
+        // Mobile phone toggle — mais robusto para toque/pointer/teclado e proteção contra nulos
         const androidToggle = document.getElementById('android-toggle');
         const iphoneToggle = document.getElementById('iphone-toggle');
-        
+
         const setActivePhone = (phone) => {
             activePhone = phone;
             const currentActiveButton = document.querySelector('#showcase-buttons button[aria-pressed="true"]');
@@ -529,21 +529,46 @@
             if (mobileScreen) mobileScreen.src = screenshots[activePhone][currentIndex];
 
             const isAndroid = phone === 'android';
-            androidToggle.classList.toggle('bg-white', isAndroid);
-            androidToggle.classList.toggle('text-blue-800', isAndroid);
-            androidToggle.classList.toggle('shadow', isAndroid);
-            androidToggle.classList.toggle('text-gray-600', !isAndroid);
-            androidToggle.setAttribute('aria-pressed', isAndroid);
-            
-            iphoneToggle.classList.toggle('bg-white', !isAndroid);
-            iphoneToggle.classList.toggle('text-blue-800', !isAndroid);
-            iphoneToggle.classList.toggle('shadow', !isAndroid);
-            iphoneToggle.classList.toggle('text-gray-600', isAndroid);
-            iphoneToggle.setAttribute('aria-pressed', !isAndroid);
+
+            if (androidToggle) {
+                androidToggle.classList.toggle('bg-white', isAndroid);
+                androidToggle.classList.toggle('text-blue-800', isAndroid);
+                androidToggle.classList.toggle('shadow', isAndroid);
+                androidToggle.classList.toggle('text-gray-600', !isAndroid);
+                androidToggle.setAttribute('aria-pressed', String(isAndroid));
+            }
+
+            if (iphoneToggle) {
+                iphoneToggle.classList.toggle('bg-white', !isAndroid);
+                iphoneToggle.classList.toggle('text-blue-800', !isAndroid);
+                iphoneToggle.classList.toggle('shadow', !isAndroid);
+                iphoneToggle.classList.toggle('text-gray-600', isAndroid);
+                iphoneToggle.setAttribute('aria-pressed', String(!isAndroid));
+            }
         }
 
-        if(androidToggle) androidToggle.addEventListener('click', () => setActivePhone('android'));
-        if(iphoneToggle) iphoneToggle.addEventListener('click', () => setActivePhone('iphone'));
+        // Helper que adiciona ouvintes confiáveis para toque/pointer/click e teclado
+        const addActivateListener = (el, phone) => {
+            if (!el) return;
+            const handler = (e) => {
+                if (e && typeof e.preventDefault === 'function' && e.type === 'click') e.preventDefault();
+                setActivePhone(phone);
+            };
+            el.addEventListener('click', handler);
+            el.addEventListener('pointerdown', handler);
+            // touchstart como fallback para alguns navegadores móveis
+            el.addEventListener('touchstart', (e) => { setActivePhone(phone); }, { passive: true });
+            // acessibilidade por teclado
+            el.addEventListener('keyup', (e) => { if (e.key === 'Enter' || e.key === ' ') setActivePhone(phone); });
+            // rolar foco no clique/touch para melhorar usabilidade
+            el.addEventListener('click', () => el.focus());
+        };
+
+        addActivateListener(androidToggle, 'android');
+        addActivateListener(iphoneToggle, 'iphone');
+
+        // inicializa o estado visual conforme o `activePhone` padrão
+        setActivePhone(activePhone);
 
 
         // --- Scroll Animations ---
