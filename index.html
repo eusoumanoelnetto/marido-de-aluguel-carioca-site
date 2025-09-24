@@ -445,28 +445,32 @@
         // --- Mobile Menu ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
 
-        mobileMenuButton.addEventListener('click', () => {
-            const isMenuOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !isMenuOpen);
-            mobileMenuButton.querySelector('i').classList.toggle('fa-times', !isMenuOpen);
-            mobileMenuButton.querySelector('i').classList.toggle('fa-bars', isMenuOpen);
-            mobileMenu.classList.toggle('max-h-80', !isMenuOpen);
-            mobileMenu.classList.toggle('max-h-0', isMenuOpen);
-            mobileMenu.classList.toggle('py-4', !isMenuOpen);
-            mobileMenu.classList.toggle('opacity-100', !isMenuOpen);
-            mobileMenu.classList.toggle('opacity-0', isMenuOpen);
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isMenuOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', String(!isMenuOpen));
+                const icon = mobileMenuButton.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-times', !isMenuOpen);
+                    icon.classList.toggle('fa-bars', isMenuOpen);
+                }
+                mobileMenu.classList.toggle('max-h-80', !isMenuOpen);
+                mobileMenu.classList.toggle('max-h-0', isMenuOpen);
+                mobileMenu.classList.toggle('py-4', !isMenuOpen);
+                mobileMenu.classList.toggle('opacity-100', !isMenuOpen);
+                mobileMenu.classList.toggle('opacity-0', isMenuOpen);
+            });
 
-        const closeMobileMenu = () => {
-             if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
-                 mobileMenuButton.click();
-            }
-        };
+            const closeMobileMenu = () => {
+                if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                    mobileMenuButton.click();
+                }
+            };
 
-        mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-
+            mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+        }
 
         // --- Hero Parallax ---
         const heroBg = document.getElementById('hero-bg');
@@ -478,20 +482,20 @@
         }
 
         // --- Showcase Interactivity ---
-                const screenshots = {
-                    android: [
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/orcamentos.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/agenda.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/perfil.jpeg',
-                    ],
-                    iphone: [
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/orcamentos.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/agenda.jpeg',
-                        'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/perfil.jpeg',
-                    ]
-                };
+        const screenshots = {
+            android: [
+                '/assets/categorias.jpeg',
+                '/assets/orcamentos.jpeg',
+                '/assets/agenda.jpeg',
+                '/assets/perfil.jpeg',
+            ],
+            iphone: [
+                '/assets/categorias.jpeg',
+                '/assets/orcamentos.jpeg',
+                '/assets/agenda.jpeg',
+                '/assets/perfil.jpeg',
+            ]
+        };
 
         const showcaseButtons = document.querySelectorAll('#showcase-buttons button');
         const androidScreen = document.getElementById('android-screen');
@@ -501,10 +505,30 @@
         const iphoneMockupWrapper = document.getElementById('iphone-mockup-wrapper');
         let activePhone = 'android';
 
+        // Atualiza visual dos mockups (mobile + md+)
+        const updateMockupsVisual = (phone, index = 0) => {
+            // mobile single-screen
+            if (mobileScreen && screenshots[phone] && screenshots[phone][index]) {
+                mobileScreen.src = screenshots[phone][index];
+            }
+
+            // md+ dual mockups: atualiza as imagens e aplica opacidade/transform
+            if (androidScreen && screenshots.android[index]) androidScreen.src = screenshots.android[index];
+            if (iphoneScreen && screenshots.iphone[index]) iphoneScreen.src = screenshots.iphone[index];
+
+            if (androidMockupWrapper && iphoneMockupWrapper) {
+                const isAndroid = phone === 'android';
+                androidMockupWrapper.style.opacity = isAndroid ? '1' : '0.35';
+                iphoneMockupWrapper.style.opacity = isAndroid ? '0.35' : '1';
+                androidMockupWrapper.style.transform = isAndroid ? 'translateY(0px)' : 'translateY(6px)';
+                iphoneMockupWrapper.style.transform = isAndroid ? 'translateY(6px)' : 'translateY(0px)';
+            }
+        };
+
         showcaseButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const index = parseInt(button.dataset.showcaseIndex, 10);
-                
+                const index = parseInt(button.dataset.showcaseIndex, 10) || 0;
+
                 showcaseButtons.forEach(btn => {
                     const isSelected = btn === button;
                     btn.classList.toggle('bg-blue-100', isSelected);
@@ -514,18 +538,15 @@
                     btn.classList.toggle('bg-white', !isSelected);
                     btn.classList.toggle('border-slate-200', !isSelected);
                     btn.classList.toggle('shadow-sm', !isSelected);
-                    btn.setAttribute('aria-pressed', isSelected);
+                    btn.setAttribute('aria-pressed', String(isSelected));
                 });
 
-                if (androidScreen) androidScreen.src = screenshots.android[index];
-                if (iphoneScreen) iphoneScreen.src = screenshots.iphone[index];
-                if (mobileScreen) mobileScreen.src = screenshots[activePhone][index];
-                if (androidMockupWrapper) androidMockupWrapper.style.transform = `translateY(${index * -5}px)`;
-                if (iphoneMockupWrapper) iphoneMockupWrapper.style.transform = `translateY(${index * 5}px)`;
+                // atualiza imagens segundo o estado atual do telefone
+                updateMockupsVisual(activePhone, index);
             });
         });
-        
-        // Mobile phone toggle — mais robusto para toque/pointer/teclado e proteção contra nulos
+
+        // Mobile phone toggle — robusto e evita duplicar touch+click
         const androidToggle = document.getElementById('android-toggle');
         const iphoneToggle = document.getElementById('iphone-toggle');
 
@@ -533,10 +554,9 @@
             activePhone = phone;
             const currentActiveButton = document.querySelector('#showcase-buttons button[aria-pressed="true"]');
             const currentIndex = currentActiveButton ? parseInt(currentActiveButton.dataset.showcaseIndex, 10) : 0;
-            if (mobileScreen) mobileScreen.src = screenshots[activePhone][currentIndex];
 
+            // Atualiza visual dos botões
             const isAndroid = phone === 'android';
-
             if (androidToggle) {
                 androidToggle.classList.toggle('bg-white', isAndroid);
                 androidToggle.classList.toggle('text-blue-800', isAndroid);
@@ -544,7 +564,6 @@
                 androidToggle.classList.toggle('text-gray-600', !isAndroid);
                 androidToggle.setAttribute('aria-pressed', String(isAndroid));
             }
-
             if (iphoneToggle) {
                 iphoneToggle.classList.toggle('bg-white', !isAndroid);
                 iphoneToggle.classList.toggle('text-blue-800', !isAndroid);
@@ -552,22 +571,37 @@
                 iphoneToggle.classList.toggle('text-gray-600', isAndroid);
                 iphoneToggle.setAttribute('aria-pressed', String(!isAndroid));
             }
-        }
 
-        // Helper que adiciona ouvintes confiáveis para toque/pointer/click e teclado
+            // Atualiza mockups/imagens
+            updateMockupsVisual(phone, currentIndex);
+        };
+
+        // Evitar duplicação: se houve touch recentemente, ignorar click subsequente
+        let lastTouchAt = 0;
+        const TOUCH_IGNORE_MS = 700;
+
         const addActivateListener = (el, phone) => {
             if (!el) return;
-            const handler = (e) => {
-                if (e && typeof e.preventDefault === 'function' && e.type === 'click') e.preventDefault();
+
+            // touchstart: registra toque imediatamente
+            el.addEventListener('touchstart', (e) => {
+                lastTouchAt = Date.now();
+                setActivePhone(phone);
+            }, { passive: true });
+
+            // pointerup/click: executa apenas se não houver touch recente
+            const maybeActivate = (e) => {
+                if (e && e.type === 'click' && (Date.now() - lastTouchAt) < TOUCH_IGNORE_MS) return;
                 setActivePhone(phone);
             };
-            el.addEventListener('click', handler);
-            el.addEventListener('pointerdown', handler);
-            // touchstart como fallback para alguns navegadores móveis
-            el.addEventListener('touchstart', (e) => { setActivePhone(phone); }, { passive: true });
+
+            el.addEventListener('pointerup', maybeActivate);
+            el.addEventListener('click', maybeActivate);
+
             // acessibilidade por teclado
             el.addEventListener('keyup', (e) => { if (e.key === 'Enter' || e.key === ' ') setActivePhone(phone); });
-            // rolar foco no clique/touch para melhorar usabilidade
+
+            // rolar foco ao ativar (melhora usabilidade)
             el.addEventListener('click', () => el.focus());
         };
 
@@ -576,7 +610,6 @@
 
         // inicializa o estado visual conforme o `activePhone` padrão
         setActivePhone(activePhone);
-
 
         // --- Scroll Animations ---
         const animatedElements = document.querySelectorAll('.scroll-animate');
