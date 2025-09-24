@@ -134,6 +134,7 @@
                       <a href="https://marido-de-aluguel-carioca.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-transparent text-blue-800 font-bold py-3 px-8 rounded-lg text-base sm:text-lg border-2 border-blue-800 hover:bg-blue-100 transition-all duration-300 ease-in-out active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Acessar o Web App do Marido de Aluguel Carioca (abre em nova aba)">
                           Acessar a Web App
                       </a>
+                                                <button id="pwa-install-btn" class="ml-4 hidden bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" aria-hidden="true">Instalar</button>
                   </div>
                 </div>
             </div>
@@ -433,6 +434,63 @@
     </footer>
 
     <script>
+            // --- PWA install prompt handler ---
+            (function(){
+                let deferredPrompt = null;
+                const installBtn = document.getElementById('pwa-install-btn');
+                const iosInstructions = document.createElement('div');
+
+                iosInstructions.id = 'pwa-ios-instructions';
+                iosInstructions.className = 'hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50';
+                iosInstructions.innerHTML = `
+                    <div class="bg-white rounded-lg max-w-sm p-6 text-center">
+                        <h3 class="font-bold mb-2">Instalar no iPhone</h3>
+                        <p class="text-sm text-gray-700 mb-4">Para adicionar o app à sua tela de início: toque no ícone de <strong>Compartilhar</strong> e escolha <strong>Adicionar à Tela de Início</strong>.</p>
+                        <button id="pwa-ios-close" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded">Fechar</button>
+                    </div>
+                `;
+                document.body.appendChild(iosInstructions);
+
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    if (installBtn) {
+                        installBtn.classList.remove('hidden');
+                        installBtn.setAttribute('aria-hidden', 'false');
+                    }
+                });
+
+                if (installBtn) {
+                    installBtn.addEventListener('click', async () => {
+                        if (!deferredPrompt) {
+                            // provavelmente iOS — mostrar instruções
+                            iosInstructions.classList.remove('hidden');
+                            return;
+                        }
+                        deferredPrompt.prompt();
+                        const choice = await deferredPrompt.userChoice;
+                        deferredPrompt = null;
+                        installBtn.classList.add('hidden');
+                        installBtn.setAttribute('aria-hidden', 'true');
+                    });
+                }
+
+                // iOS detection fallback
+                const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+                const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
+                if (isIos && !isInStandalone) {
+                    // mostrar instruções discretamente (botão sempre visível)
+                    if (installBtn) {
+                        installBtn.classList.remove('hidden');
+                        installBtn.textContent = 'Instalar (iOS)';
+                        installBtn.addEventListener('click', () => iosInstructions.classList.remove('hidden'));
+                    }
+                }
+
+                const closeBtn = document.getElementById('pwa-ios-close');
+                if (closeBtn) closeBtn.addEventListener('click', () => iosInstructions.classList.add('hidden'));
+            })();
+
     document.addEventListener('DOMContentLoaded', () => {
 
         // --- Mobile Menu ---
