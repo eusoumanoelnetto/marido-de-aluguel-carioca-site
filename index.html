@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marido de Aluguel Carioca - Reparos Domésticos no Rio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Encontre profissionais qualificados para reparos domésticos no Rio de Janeiro. O app Marido de Aluguel Carioca conecta você a eletricistas, encanadores, montadores e mais. Orçamentos rápidos e agendamento fácil." />
+    <meta name="keywords" content="marido de aluguel, reparos domésticos, eletricista, encanador, montador de móveis, Rio de Janeiro, serviços domésticos, consertos, manutenção, app de serviços" />
+    <meta name="author" content="Manoel Coelho | Nerd da Cadeira" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://marido-de-aluguel-carioca.vercel.app/" />
+    <meta name="theme-color" content="#1e40af">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://marido-de-aluguel-carioca.vercel.app/" />
+    <meta property="og:title" content="Marido de Aluguel Carioca - Seus problemas domésticos resolvidos!" />
+    <meta property="og:description" content="Conectamos você aos melhores profissionais para reparos, instalações e manutenções. Rápido, seguro e na palma da sua mão." />
+    <meta property="og:image" content="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" />
+    <meta property="og:site_name" content="Marido de Aluguel Carioca" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="https://marido-de-aluguel-carioca.vercel.app/" />
+    <meta name="twitter:title" content="Marido de Aluguel Carioca - Seus problemas domésticos resolvidos!" />
+    <meta name="twitter:description" content="Conectamos você aos melhores profissionais para reparos, instalações e manutenções. Rápido, seguro e na palma da sua mão." />
+    <meta name="twitter:image" content="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-delay: var(--animation-delay, 0s);
+        }
+        .scroll-animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-on-load {
+          opacity: 0;
+          animation: fadeInUp 0.6s ease-out forwards;
+          animation-delay: var(--animation-delay, 0s);
+        }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-50 text-gray-800 font-sans">
+    
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+        <a href="#" class="group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md" aria-label="Início, voltar ao topo">
+            <div class="flex items-center space-x-2">
+                <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Logo Marido de Aluguel" class="h-12 w-auto transition-transform duration-300 ease-in-out group-hover:rotate-[12deg] group-hover:scale-110" width="48" height="48" fetchPriority="high" />
+                <span class="text-xl font-bold text-blue-900 hidden sm:inline">Marido de Aluguel Carioca</span>
+            </div>
+        </a>
+        
+        <div class="flex items-center space-x-4">
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#features" class="text-gray-600 hover:text-blue-800 transition-colors rounded-sm py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Funcionalidades</a>
+                <a href="#showcase" class="text-gray-600 hover:text-blue-800 transition-colors rounded-sm py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500">O App</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-blue-800 transition-colors rounded-sm py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Como Funciona</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-800 transition-colors rounded-sm py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Depoimentos</a>
+            </div>
+            
+            <a href="#cta" class="bg-red-600 text-white font-bold py-2 px-4 sm:px-5 rounded-lg hover:bg-red-700 transition-all duration-300 ease-in-out hover:scale-105 active:scale-100 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Baixar o App
+            </a>
+            
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-blue-900 text-2xl p-1 rounded-md transition-all duration-200 hover:bg-blue-100 active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+      </nav>
+      
+      <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+        <div class="flex flex-col items-center space-y-4 px-4">
+           <a href="#features" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 50ms;">Funcionalidades</a>
+           <a href="#showcase" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 125ms;">O App</a>
+           <a href="#how-it-works" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 200ms;">Como Funciona</a>
+           <a href="#testimonials" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 275ms;">Depoimentos</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+        <section id="hero" class="relative bg-white py-20 md:py-32 overflow-hidden">
+            <div id="hero-bg" class="absolute inset-0 bg-grid-slate-200 [mask-image:linear-gradient(to_bottom,white,transparent)]" aria-hidden="true"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="animate-on-load" style="--animation-delay: 0ms;">
+                  <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Marido de Aluguel Logo" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6" width="160" height="160" fetchPriority="high" />
+                </div>
+                <div class="animate-on-load" style="--animation-delay: 100ms;">
+                  <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-900 leading-tight mb-4">
+                      Seus problemas domésticos <span class="text-red-600">resolvidos!</span>
+                  </h1>
+                </div>
+                <div class="animate-on-load" style="--animation-delay: 200ms;">
+                  <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                      Conectamos você aos melhores profissionais para reparos, instalações e manutenções. Rápido, seguro e na palma da sua mão.
+                  </p>
+                </div>
+                <div class="animate-on-load" style="--animation-delay: 300ms;">
+                  <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                      <a href="#cta" class="bg-blue-800 text-white font-bold py-3 px-8 rounded-lg text-base sm:text-lg hover:bg-blue-900 transition-all duration-300 ease-in-out hover:scale-105 shadow-lg active:scale-100 active:bg-blue-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                          Encontre um Profissional
+                      </a>
+                      <a href="https://marido-de-aluguel-carioca.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-transparent text-blue-800 font-bold py-3 px-8 rounded-lg text-base sm:text-lg border-2 border-blue-800 hover:bg-blue-100 transition-all duration-300 ease-in-out active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Acessar o Web App do Marido de Aluguel Carioca (abre em nova aba)">
+                          Acessar a Web App
+                      </a>
+                  </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-16 sm:py-20 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="scroll-animate text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Tudo que você precisa, em um só App</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                        Desenvolvemos funcionalidades pensadas para facilitar sua vida e a dos profissionais.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="scroll-animate" style="--animation-delay: 0ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-wrench"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Diversos Serviços</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">De montagem de móveis a reparos elétricos e hidráulicos, encontre tudo em um só lugar.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 100ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Orçamento Fácil</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Descreva seu problema, envie fotos e receba orçamentos de vários profissionais qualificados.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 200ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-calendar-alt"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Agendamento Flexível</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Visualize a agenda do profissional e escolha o melhor dia e horário para o serviço.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 300ms;">
+                         <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-comments"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Comunicação Direta</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Converse com os profissionais diretamente pelo nosso chat seguro para alinhar detalhes.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 400ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-star"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Avaliações Reais</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Confira as avaliações de outros clientes e contrate com mais segurança e confiança.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 500ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-2 h-full">
+                            <div class="text-red-600 text-4xl mb-4 inline-block"><i class="fas fa-handshake"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Pagamento Flexível</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Combine o pagamento diretamente com o profissional. Flexibilidade e transparência para você.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="scroll-animate text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Moderno, Intuitivo e Completo</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                      Uma experiência de usuário projetada para ser simples e eficiente, tanto no Android quanto no iPhone.
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-20">
+                    <div class="scroll-animate lg:w-1/3">
+                        <div id="showcase-buttons" class="space-y-6">
+                            <button data-showcase-index="0" class="text-left p-4 rounded-lg border-2 w-full transition-all duration-300 transform bg-blue-100 border-blue-800 scale-105 shadow-lg" aria-pressed="true">
+                                <h3 class="font-bold text-blue-900 text-lg">Encontre Serviços</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Navegue por categorias e encontre o que precisa.</p>
+                            </button>
+                            <button data-showcase-index="1" class="text-left p-4 rounded-lg border-2 w-full transition-all duration-300 transform bg-white border-slate-200 shadow-sm hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-100 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-pressed="false">
+                                <h3 class="font-bold text-blue-900 text-lg">Gerencie Orçamentos</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Compare propostas e escolha o melhor profissional.</p>
+                            </button>
+                            <button data-showcase-index="2" class="text-left p-4 rounded-lg border-2 w-full transition-all duration-300 transform bg-white border-slate-200 shadow-sm hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-100 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-pressed="false">
+                                <h3 class="font-bold text-blue-900 text-lg">Acompanhe sua Agenda</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Nunca mais perca um compromisso de serviço.</p>
+                            </button>
+                            <button data-showcase-index="3" class="text-left p-4 rounded-lg border-2 w-full transition-all duration-300 transform bg-white border-slate-200 shadow-sm hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-100 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-pressed="false">
+                                <h3 class="font-bold text-blue-900 text-lg">Visualize Perfis</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Veja avaliações, serviços e histórico dos profissionais.</p>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/3 w-full flex flex-col items-center">
+                        <div class="md:hidden w-full flex flex-col items-center">
+                            <div class="scroll-animate" style="--animation-delay: 200ms;">
+                                <div class="transform scale-90">
+                                    <div id="mobile-mockup-container" class="relative mx-auto border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+                                        <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[13px] top-[72px] rounded-s-lg"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[13px] top-[124px] rounded-s-lg"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[13px] top-[178px] rounded-s-lg"></div>
+                                        <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[13px] top-[142px] rounded-e-lg"></div>
+                                        <div class="rounded-[2rem] overflow-hidden w-full h-full bg-white">
+                                            <img id="mobile-screen" src="https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.webp" class="w-full h-full object-contain" alt="App screenshot" loading="lazy" decoding="async" width="280" height="580" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-center justify-center space-x-2 p-1 bg-slate-200 rounded-full">
+                                <button id="android-toggle" class="px-6 py-2 rounded-full text-sm font-semibold transition-colors duration-300 bg-white text-blue-800 shadow" aria-pressed="true">
+                                    Android
+                                </button>
+                                <button id="iphone-toggle" class="px-6 py-2 rounded-full text-sm font-semibold transition-colors duration-300 text-gray-600" aria-pressed="false">
+                                    iPhone
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:flex flex-row justify-center items-center gap-8 md:gap-4">
+                            <div class="scroll-animate transform scale-75 md:scale-90 lg:scale-95 transition-transform duration-500" style="--animation-delay: 200ms;">
+                                <div id="android-mockup-wrapper" class="transform transition-transform duration-500" style="transform: translateY(0px);">
+                                    <div class="relative mx-auto border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+                                        <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[13px] top-[72px] rounded-s-lg"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[13px] top-[124px] rounded-s-lg"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[13px] top-[178px] rounded-s-lg"></div>
+                                        <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[13px] top-[142px] rounded-e-lg"></div>
+                                        <div class="rounded-[2rem] overflow-hidden w-full h-full bg-white">
+                                            <img id="android-screen" src="https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.webp" class="w-full h-full object-contain" alt="App screenshot" loading="lazy" decoding="async" width="280" height="580" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-animate transform scale-75 md:scale-90 lg:scale-95 transition-transform duration-500" style="--animation-delay: 300ms;">
+                                <div id="iphone-mockup-wrapper" class="transform transition-transform duration-500 delay-100" style="transform: translateY(0px);">
+                                    <div class="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+                                        <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                                        <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                                        <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                                        <div class="rounded-[2rem] overflow-hidden w-full h-full bg-white">
+                                          <img id="iphone-screen" src="https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.webp" class="w-full h-full object-contain" alt="App screenshot" loading="lazy" decoding="async" width="272" height="572" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-20 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="scroll-animate text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Resolver nunca foi tão fácil</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                      Em apenas 4 passos simples, seu problema está resolvido.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-8 px-8 md:px-0">
+                    <div class="scroll-animate" style="--animation-delay: 0ms;">
+                        <div class="relative h-full">
+                            <div class="absolute -top-8 -left-8 bg-blue-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-slate-100">1</div>
+                            <div class="bg-white p-6 pt-10 sm:p-8 sm:pt-10 rounded-xl shadow-lg h-full">
+                                <div class="text-red-600 text-3xl mb-4"><i class="fas fa-pencil-ruler"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Descreva o Serviço</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Informe o que você precisa, adicione fotos e detalhes para um orçamento mais preciso.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 150ms;">
+                        <div class="relative h-full">
+                            <div class="absolute -top-8 -left-8 bg-blue-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-slate-100">2</div>
+                            <div class="bg-white p-6 pt-10 sm:p-8 sm:pt-10 rounded-xl shadow-lg h-full">
+                                <div class="text-red-600 text-3xl mb-4"><i class="fas fa-file-signature"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Receba Orçamentos</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Profissionais qualificados enviarão suas propostas. Compare preços e perfis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 300ms;">
+                        <div class="relative h-full">
+                            <div class="absolute -top-8 -left-8 bg-blue-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-slate-100">3</div>
+                            <div class="bg-white p-6 pt-10 sm:p-8 sm:pt-10 rounded-xl shadow-lg h-full">
+                                <div class="text-red-600 text-3xl mb-4"><i class="fas fa-calendar-check"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Contrate e Agende</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Escolha o profissional ideal, aceite o orçamento e agende o serviço pelo app.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 450ms;">
+                        <div class="relative h-full">
+                            <div class="absolute -top-8 -left-8 bg-blue-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-slate-100">4</div>
+                            <div class="bg-white p-6 pt-10 sm:p-8 sm:pt-10 rounded-xl shadow-lg h-full">
+                                <div class="text-red-600 text-3xl mb-4"><i class="fas fa-thumbs-up"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-blue-900 mb-2">Avalie o Serviço</h3>
+                                <p class="text-gray-600 text-sm sm:text-base">Após a conclusão, avalie o profissional e ajude a comunidade a crescer com confiança.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="scroll-animate text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">O que nossos clientes dizem</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                      A confiança e a satisfação de quem usa nosso app é o nosso maior orgulho.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="scroll-animate" style="--animation-delay: 0ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="text-5xl text-blue-200 leading-none">“</div>
+                            <p class="text-gray-600 mb-4 flex-grow italic">"Serviço impecável! O profissional foi rápido, educado e resolveu meu vazamento em minutos. Recomendo demais o aplicativo!"</p>
+                            <div class="flex items-center mt-auto">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar de Ana Silva" class="w-12 h-12 rounded-full mr-4 object-cover" loading="lazy" decoding="async" />
+                                <div>
+                                    <p class="font-bold text-blue-900">Ana Silva</p>
+                                    <p class="text-sm text-gray-500">Cliente Satisfeita, Copacabana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 150ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="text-5xl text-blue-200 leading-none">“</div>
+                            <p class="text-gray-600 mb-4 flex-grow italic">"Não tenho muita prática com tecnologia, mas o aplicativo é muito fácil de usar. O profissional foi pontual e muito respeitoso. Serviço de primeira!"</p>
+                            <div class="flex items-center mt-auto">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Avatar de José Ribeiro" class="w-12 h-12 rounded-full mr-4 object-cover" loading="lazy" decoding="async" />
+                                <div>
+                                    <p class="font-bold text-blue-900">José Ribeiro</p>
+                                    <p class="text-sm text-gray-500">Cliente Satisfeito, Laranjeiras</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-animate" style="--animation-delay: 300ms;">
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="text-5xl text-blue-200 leading-none">“</div>
+                            <p class="text-gray-600 mb-4 flex-grow italic">"Tinha um problema elétrico complicado e o eletricista que contratei pelo app resolveu tudo com muita competência. Preço justo e ótimo atendimento."</p>
+                            <div class="flex items-center mt-auto">
+                                <img src="https://placedog.net/100/100" alt="Avatar de Mariana Costa" class="w-12 h-12 rounded-full mr-4 object-cover" loading="lazy" decoding="async" />
+                                <div>
+                                    <p class="font-bold text-blue-900">Mariana Costa</p>
+                                    <p class="text-sm text-gray-500">Cliente Satisfeita, Tijuca</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="bg-blue-900 text-white">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <div class="scroll-animate">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+                      Chega de dor de cabeça com reparos!
+                    </h2>
+                </div>
+                <div class="scroll-animate" style="--animation-delay: 100ms;">
+                    <p class="text-base sm:text-lg md:text-xl text-blue-200 max-w-3xl mx-auto mb-8">
+                      Junte-se a milhares de clientes satisfeitos. Baixe agora o app e tenha os melhores profissionais na palma da sua mão.
+                    </p>
+                </div>
+                <div class="scroll-animate" style="--animation-delay: 200ms;">
+                    <div class="flex justify-center">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-base sm:text-lg hover:bg-red-700 transition-all duration-300 ease-in-out hover:scale-105 shadow-xl active:scale-100 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" aria-label="Baixar o App">
+                          Baixar o App
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll-animate" style="--animation-delay: 300ms;">
+                    <p class="mt-6 text-xs sm:text-sm text-blue-300">Disponível em breve!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="text-lg font-bold text-white mb-2">Marido de Aluguel Carioca</p>
+                    <p class="text-sm">
+                        © Manoel Coelho | Nerd da Cadeira - 2025 <br />
+                        Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/eusoumanoelnetto/marido-de-aluguel-carioca" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-all duration-200 text-xl sm:text-2xl hover:scale-110 active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 rounded-full" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-all duration-200 text-xl sm:text-2xl hover:scale-110 active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 rounded-full" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-all duration-200 text-xl sm:text-2xl hover:scale-110 active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 rounded-full" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isMenuOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isMenuOpen);
+            mobileMenuButton.querySelector('i').classList.toggle('fa-times', !isMenuOpen);
+            mobileMenuButton.querySelector('i').classList.toggle('fa-bars', isMenuOpen);
+            mobileMenu.classList.toggle('max-h-80', !isMenuOpen);
+            mobileMenu.classList.toggle('max-h-0', isMenuOpen);
+            mobileMenu.classList.toggle('py-4', !isMenuOpen);
+            mobileMenu.classList.toggle('opacity-100', !isMenuOpen);
+            mobileMenu.classList.toggle('opacity-0', isMenuOpen);
+        });
+
+        const closeMobileMenu = () => {
+             if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                 mobileMenuButton.click();
+            }
+        };
+
+        mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+
+        // --- Hero Parallax ---
+        const heroBg = document.getElementById('hero-bg');
+        if (heroBg) {
+            window.addEventListener('scroll', () => {
+                const offsetY = window.pageYOffset;
+                heroBg.style.transform = `translateY(${offsetY * 0.5}px)`;
+            });
+        }
+
+        // --- Showcase Interactivity ---
+        const screenshots = {
+          android: [
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/orcamentos.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/agenda.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/perfil.webp',
+          ],
+          iphone: [
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/categorias.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/orcamentos.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/agenda.webp',
+            'https://raw.githubusercontent.com/eusoumanoelnetto/marido-de-aluguel-carioca/refs/heads/main/public/assets/perfil.webp',
+          ]
+        };
+
+        const showcaseButtons = document.querySelectorAll('#showcase-buttons button');
+        const androidScreen = document.getElementById('android-screen');
+        const iphoneScreen = document.getElementById('iphone-screen');
+        const mobileScreen = document.getElementById('mobile-screen');
+        const androidMockupWrapper = document.getElementById('android-mockup-wrapper');
+        const iphoneMockupWrapper = document.getElementById('iphone-mockup-wrapper');
+        let activePhone = 'android';
+
+        showcaseButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const index = parseInt(button.dataset.showcaseIndex, 10);
+                
+                showcaseButtons.forEach(btn => {
+                    const isSelected = btn === button;
+                    btn.classList.toggle('bg-blue-100', isSelected);
+                    btn.classList.toggle('border-blue-800', isSelected);
+                    btn.classList.toggle('scale-105', isSelected);
+                    btn.classList.toggle('shadow-lg', isSelected);
+                    btn.classList.toggle('bg-white', !isSelected);
+                    btn.classList.toggle('border-slate-200', !isSelected);
+                    btn.classList.toggle('shadow-sm', !isSelected);
+                    btn.setAttribute('aria-pressed', isSelected);
+                });
+
+                if (androidScreen) androidScreen.src = screenshots.android[index];
+                if (iphoneScreen) iphoneScreen.src = screenshots.iphone[index];
+                if (mobileScreen) mobileScreen.src = screenshots[activePhone][index];
+                if (androidMockupWrapper) androidMockupWrapper.style.transform = `translateY(${index * -5}px)`;
+                if (iphoneMockupWrapper) iphoneMockupWrapper.style.transform = `translateY(${index * 5}px)`;
+            });
+        });
+        
+        // Mobile phone toggle
+        const androidToggle = document.getElementById('android-toggle');
+        const iphoneToggle = document.getElementById('iphone-toggle');
+        
+        const setActivePhone = (phone) => {
+            activePhone = phone;
+            const currentActiveButton = document.querySelector('#showcase-buttons button[aria-pressed="true"]');
+            const currentIndex = currentActiveButton ? parseInt(currentActiveButton.dataset.showcaseIndex, 10) : 0;
+            if (mobileScreen) mobileScreen.src = screenshots[activePhone][currentIndex];
+
+            const isAndroid = phone === 'android';
+            androidToggle.classList.toggle('bg-white', isAndroid);
+            androidToggle.classList.toggle('text-blue-800', isAndroid);
+            androidToggle.classList.toggle('shadow', isAndroid);
+            androidToggle.classList.toggle('text-gray-600', !isAndroid);
+            androidToggle.setAttribute('aria-pressed', isAndroid);
+            
+            iphoneToggle.classList.toggle('bg-white', !isAndroid);
+            iphoneToggle.classList.toggle('text-blue-800', !isAndroid);
+            iphoneToggle.classList.toggle('shadow', !isAndroid);
+            iphoneToggle.classList.toggle('text-gray-600', isAndroid);
+            iphoneToggle.setAttribute('aria-pressed', !isAndroid);
+        }
+
+        if(androidToggle) androidToggle.addEventListener('click', () => setActivePhone('android'));
+        if(iphoneToggle) iphoneToggle.addEventListener('click', () => setActivePhone('iphone'));
+
+
+        // --- Scroll Animations ---
+        const animatedElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach(el => observer.observe(el));
+    });
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
