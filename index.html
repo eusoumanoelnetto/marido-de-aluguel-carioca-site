@@ -497,6 +497,26 @@
             ]
         };
 
+        // Permite sobrescrever qual mockup deve exibir qual imagem por telefone+índice.
+        // Exemplo: ao pressionar 'iphone' para o índice 0, queremos mostrar o mockup android com '/assets/perfil.jpeg'
+        const mockupOverrides = {
+            iphone: {
+                // index: override
+                0: {
+                    highlight: 'android',
+                    androidSrc: '/assets/perfil.jpeg',
+                    androidOpacity: '1',
+                    iphoneOpacity: '0.35',
+                    androidTransform: 'translateY(0px)',
+                    iphoneTransform: 'translateY(6px)'
+                }
+                // você pode adicionar mais índices aqui conforme necessário
+            },
+            android: {
+                // adicione overrides para quando android for selecionado (se necessário)
+            }
+        };
+
         const showcaseButtons = document.querySelectorAll('#showcase-buttons button');
         const androidScreen = document.getElementById('android-screen');
         const iphoneScreen = document.getElementById('iphone-screen');
@@ -507,12 +527,33 @@
 
         // Atualiza visual dos mockups (mobile + md+)
         const updateMockupsVisual = (phone, index = 0) => {
-            // mobile single-screen
-            if (mobileScreen && screenshots[phone] && screenshots[phone][index]) {
-                mobileScreen.src = screenshots[phone][index];
+            // mobile single-screen padrão
+            if (mobileScreen) {
+                // se houver override específico, usa-o para a tela mobile também
+                const override = mockupOverrides[phone] && mockupOverrides[phone][index];
+                if (override && override.mobileSrc) {
+                    mobileScreen.src = override.mobileSrc;
+                } else if (screenshots[phone] && screenshots[phone][index]) {
+                    mobileScreen.src = screenshots[phone][index];
+                }
             }
 
-            // md+ dual mockups: atualiza as imagens e aplica opacidade/transform
+            // verifica override para md+ (dual mockups)
+            const override = mockupOverrides[phone] && mockupOverrides[phone][index];
+            if (override) {
+                if (override.androidSrc && androidScreen) androidScreen.src = override.androidSrc;
+                if (override.iphoneSrc && iphoneScreen) iphoneScreen.src = override.iphoneSrc;
+
+                if (androidMockupWrapper && iphoneMockupWrapper) {
+                    androidMockupWrapper.style.opacity = override.androidOpacity || (phone === 'android' ? '1' : '0.35');
+                    iphoneMockupWrapper.style.opacity = override.iphoneOpacity || (phone === 'iphone' ? '1' : '0.35');
+                    androidMockupWrapper.style.transform = override.androidTransform || (phone === 'android' ? 'translateY(0px)' : 'translateY(6px)');
+                    iphoneMockupWrapper.style.transform = override.iphoneTransform || (phone === 'iphone' ? 'translateY(0px)' : 'translateY(6px)');
+                }
+                return;
+            }
+
+            // fallback padrão quando não há override
             if (androidScreen && screenshots.android[index]) androidScreen.src = screenshots.android[index];
             if (iphoneScreen && screenshots.iphone[index]) iphoneScreen.src = screenshots.iphone[index];
 
