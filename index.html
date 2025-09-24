@@ -498,9 +498,9 @@
         };
 
         // Permite sobrescrever qual mockup deve exibir qual imagem por telefone+índice.
-        // Exemplo: ao pressionar 'iphone' para o índice 0, queremos mostrar o mockup android com '/assets/perfil.jpeg'
+        // Exemplo: ao pressionar 'android' para o índice 0, queremos mostrar o mockup android com '/assets/perfil.jpeg'
         const mockupOverrides = {
-            iphone: {
+            android: {
                 // index: override
                 0: {
                     highlight: 'android',
@@ -513,8 +513,8 @@
                 }
                 // você pode adicionar mais índices aqui conforme necessário
             },
-            android: {
-                // quando Android for selecionado no índice 0 queremos que o mockup iPhone apareça com /assets/perfil.jpeg
+            iphone: {
+                // quando iphone for selecionado no índice 0 queremos que o mockup iPhone apareça com /assets/perfil.jpeg
                 0: {
                     highlight: 'iphone',
                     iphoneSrc: '/assets/perfil.jpeg',
@@ -537,6 +537,7 @@
 
         // Atualiza visual dos mockups (mobile + md+)
         const updateMockupsVisual = (phone, index = 0) => {
+            const isDesktop = window.matchMedia('(min-width: 768px)').matches; // md breakpoint
             // mobile single-screen padrão
             if (mobileScreen) {
                 // se houver override específico, usa-o para a tela mobile também
@@ -555,8 +556,14 @@
                 if (override.iphoneSrc && iphoneScreen) iphoneScreen.src = override.iphoneSrc;
 
                 if (androidMockupWrapper && iphoneMockupWrapper) {
-                    androidMockupWrapper.style.opacity = override.androidOpacity || (phone === 'android' ? '1' : '0.35');
-                    iphoneMockupWrapper.style.opacity = override.iphoneOpacity || (phone === 'iphone' ? '1' : '0.35');
+                    // em desktop forçamos opacidade 1 para ambos (não deixar acinzentado)
+                    if (isDesktop) {
+                        androidMockupWrapper.style.opacity = '1';
+                        iphoneMockupWrapper.style.opacity = '1';
+                    } else {
+                        androidMockupWrapper.style.opacity = override.androidOpacity || (phone === 'android' ? '1' : '0.35');
+                        iphoneMockupWrapper.style.opacity = override.iphoneOpacity || (phone === 'iphone' ? '1' : '0.35');
+                    }
                     androidMockupWrapper.style.transform = override.androidTransform || (phone === 'android' ? 'translateY(0px)' : 'translateY(6px)');
                     iphoneMockupWrapper.style.transform = override.iphoneTransform || (phone === 'iphone' ? 'translateY(0px)' : 'translateY(6px)');
                 }
@@ -569,12 +576,22 @@
 
             if (androidMockupWrapper && iphoneMockupWrapper) {
                 const isAndroid = phone === 'android';
-                androidMockupWrapper.style.opacity = isAndroid ? '1' : '0.35';
-                iphoneMockupWrapper.style.opacity = isAndroid ? '0.35' : '1';
+                if (isDesktop) {
+                    // no desktop ambos devem aparecer com cor/contraste normais
+                    androidMockupWrapper.style.opacity = '1';
+                    iphoneMockupWrapper.style.opacity = '1';
+                } else {
+                    androidMockupWrapper.style.opacity = isAndroid ? '1' : '0.35';
+                    iphoneMockupWrapper.style.opacity = isAndroid ? '0.35' : '1';
+                }
                 androidMockupWrapper.style.transform = isAndroid ? 'translateY(0px)' : 'translateY(6px)';
                 iphoneMockupWrapper.style.transform = isAndroid ? 'translateY(6px)' : 'translateY(0px)';
             }
         };
+
+        // reaplica o estado atual ao mudar o tamanho da janela (desktop <-> mobile)
+        const mq = window.matchMedia('(min-width: 768px)');
+        mq.addEventListener?.('change', () => setActivePhone(activePhone));
 
         showcaseButtons.forEach(button => {
             button.addEventListener('click', () => {
