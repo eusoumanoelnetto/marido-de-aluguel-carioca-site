@@ -513,7 +513,15 @@
                 // você pode adicionar mais índices aqui conforme necessário
             },
             android: {
-                // adicione overrides para quando android for selecionado (se necessário)
+                // quando Android for selecionado no índice 0 queremos que o mockup iPhone apareça com /assets/perfil.jpeg
+                0: {
+                    highlight: 'iphone',
+                    iphoneSrc: '/assets/perfil.jpeg',
+                    iphoneOpacity: '1',
+                    androidOpacity: '0.35',
+                    iphoneTransform: 'translateY(0px)',
+                    androidTransform: 'translateY(6px)'
+                }
             }
         };
 
