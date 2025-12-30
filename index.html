@@ -410,7 +410,60 @@
         </section>
     </main>
 
-    <footer class="bg-slate-800 text-slate-400">
+        <!-- Seção: Últimos vendidos (carrossel interno, sem redirecionamentos) -->
+        <section id="ultimos-vendidos" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-extrabold text-blue-900">Últimos vendidos</h2>
+                    <p class="text-sm text-gray-600">Veja itens populares — interaja sem sair do site.</p>
+                </div>
+
+                <!-- Carrossel wrapper -->
+                <div class="relative">
+                    <button id="lv-prev" aria-label="Anterior" class="absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2 z-10 hidden md:block">‹</button>
+                    <div id="lv-track" class="overflow-x-auto scroll-smooth no-scrollbar flex gap-4 py-2 px-2" tabindex="0" role="list" aria-label="Carrossel de últimos vendidos" style="-webkit-overflow-scrolling: touch;">
+                        <!-- Cards serão renderizados via JS -->
+                    </div>
+                    <button id="lv-next" aria-label="Próximo" class="absolute -right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2 z-10 hidden md:block">›</button>
+                </div>
+
+                <p class="text-xs text-gray-500 mt-3">Interaja com os cards; o botão "Solicitar compra" abre o modal interno.</p>
+            </div>
+
+            <!-- Modal interno para solicitar compra (sem sair da página) -->
+            <div id="purchase-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" aria-hidden="true" aria-label="Modal solicitar compra">
+                <div class="bg-white rounded-lg max-w-lg w-full p-6 mx-4" role="dialog" aria-modal="true">
+                    <h3 id="purchase-modal-title" class="text-xl font-bold text-blue-900">Solicitar compra</h3>
+                    <p id="purchase-modal-sub" class="text-sm text-gray-600 mb-4">Confirme os detalhes e solicitaremos contato.</p>
+
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm text-gray-700">Produto</label>
+                            <div id="purchase-product" class="font-semibold text-blue-900"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700">Preço estimado</label>
+                            <div id="purchase-price" class="font-semibold text-gray-800"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700">Seu nome</label>
+                            <input id="purchase-name" type="text" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" />
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700">Contato (WhatsApp/Telefone)</label>
+                            <input id="purchase-contact" type="text" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" />
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex justify-end gap-3">
+                        <button id="purchase-cancel" class="py-2 px-4 rounded-md bg-gray-200">Fechar</button>
+                        <button id="purchase-confirm" class="py-2 px-4 rounded-md bg-blue-800 text-white">Solicitar compra</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-slate-800 text-slate-400">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left">
@@ -745,7 +798,135 @@
 
         animatedElements.forEach(el => observer.observe(el));
     });
-    </script>
-  <script type="module" src="/index.tsx"></script>
+        </script>
+
+        <!-- Styles and JS for 'Últimos vendidos' carousel (puro HTML/CSS/JS) -->
+        <style>
+            /* remove scrollbar visual */
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            /* card hover visual (no links) */
+            .lv-card { transition: transform .18s ease, box-shadow .18s ease; }
+            .lv-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(15,23,42,0.08); }
+            .lv-badge { background: linear-gradient(90deg,#ef4444,#f97316); color: white; padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+            /* responsive card widths to allow up to 5 visible */
+            #lv-track .lv-card { flex: 0 0 76%; max-width: 76%; }
+            @media(min-width:640px) { #lv-track .lv-card { flex: 0 0 45%; max-width:45%; } }
+            @media(min-width:1024px) { #lv-track .lv-card { flex: 0 0 calc((100% - 32px*4)/5); max-width: calc((100% - 32px*4)/5); } }
+            /* arrows styling */
+            #lv-prev, #lv-next { width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+            /* ensure only button has pointer cursor */
+            #lv-track .lv-card, #lv-track img { cursor: default; }
+            .lv-cta { cursor: pointer; }
+        </style>
+
+        <script>
+            // Mock de produtos para 'Últimos vendidos'
+            (function(){
+                const produtos = [
+                    { id:'p1', title:'SSD SATA 480GB', price:'R$ 199,00', img:'/assets/ssd.jpeg' },
+                    { id:'p2', title:'Memória RAM 8GB DDR4', price:'R$ 149,00', img:'/assets/ram.jpeg' },
+                    { id:'p3', title:'Fonte 500W Certificada', price:'R$ 229,00', img:'/assets/fonte.jpeg' },
+                    { id:'p4', title:'Kit Teclado + Mouse', price:'R$ 119,00', img:'/assets/kit_perifericos.jpeg' },
+                    { id:'p5', title:'SSD NVMe 1TB', price:'R$ 499,00', img:'/assets/nvme.jpeg' },
+                    { id:'p6', title:'Cooler CPU', price:'R$ 89,00', img:'/assets/cooler.jpeg' }
+                ];
+
+                // Renderiza cards no carrossel
+                const track = document.getElementById('lv-track');
+                if (!track) return;
+                track.classList.add('no-scrollbar');
+
+                produtos.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'lv-card bg-white rounded-xl p-4 shadow-sm flex flex-col gap-3';
+                    card.setAttribute('role','listitem');
+                    card.innerHTML = `
+                        <div class="h-40 bg-slate-100 rounded overflow-hidden flex items-center justify-center">
+                            <img src="${p.img}" alt="${p.title}" class="object-contain h-full w-full" style="pointer-events:none; user-select:none;" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm font-semibold text-gray-800">${p.title}</div>
+                                <div class="lv-badge">Vendido recentemente</div>
+                            </div>
+                            <div class="mt-2 text-lg font-bold text-blue-900">${p.price}</div>
+                        </div>
+                        <div class="pt-2">
+                            <button class="lv-cta bg-blue-800 text-white py-2 px-3 rounded-lg w-full font-semibold" data-id="${p.id}" data-title="${p.title}" data-price="${p.price}" aria-label="Solicitar compra ${p.title}">Solicitar compra</button>
+                        </div>
+                    `;
+                    track.appendChild(card);
+                });
+
+                // Navegação por setas
+                const prev = document.getElementById('lv-prev');
+                const next = document.getElementById('lv-next');
+                const scrollByAmount = () => Math.min(track.clientWidth * 0.8, 800);
+                if (prev && next) {
+                    prev.addEventListener('click', () => track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }));
+                    next.addEventListener('click', () => track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }));
+                }
+
+                // Keyboard accessibility: setas quando o track focado
+                track.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') { track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }); }
+                    if (e.key === 'ArrowLeft') { track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }); }
+                });
+
+                // Modal: utiliza o modal interno criado na seção
+                const modal = document.getElementById('purchase-modal');
+                const modalProduct = document.getElementById('purchase-product');
+                const modalPrice = document.getElementById('purchase-price');
+                const modalCancel = document.getElementById('purchase-cancel');
+                const modalConfirm = document.getElementById('purchase-confirm');
+                const modalName = document.getElementById('purchase-name');
+                const modalContact = document.getElementById('purchase-contact');
+
+                // Abre modal e pré-preenche os dados do produto
+                track.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.lv-cta');
+                    if (!btn) return;
+                    const title = btn.getAttribute('data-title');
+                    const price = btn.getAttribute('data-price');
+                    modalProduct.textContent = title;
+                    modalPrice.textContent = price;
+                    modalName.value = '';
+                    modalContact.value = '';
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    modal.setAttribute('aria-hidden','false');
+                    modalName.focus();
+                });
+
+                // Fecha modal
+                modalCancel.addEventListener('click', () => {
+                    modal.classList.remove('flex'); modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true');
+                });
+
+                // Simula envio interno (sem redirecionamento)
+                modalConfirm.addEventListener('click', () => {
+                    // Aqui você integraria ao backend ou abriria fluxo interno existente.
+                    // Exemplo: enviar via fetch para /api/solicitacoes (não implementado)
+                    const payload = {
+                        produto: modalProduct.textContent,
+                        preco: modalPrice.textContent,
+                        nome: modalName.value,
+                        contato: modalContact.value
+                    };
+                    console.log('Solicitação (simulada):', payload);
+                    alert('Solicitação recebida. Entraremos em contato pelo número informado.');
+                    modal.classList.remove('flex'); modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true');
+                });
+
+                // Comentários de evolução:
+                // - Para evoluir para backend: criar endpoint POST /api/solicitacoes e enviar `payload`.
+                // - Para integrar pagamentos futuramente: após confirmação de orçamento, abrir fluxo interno de pagamento
+                //   dentro do modal ou em nova etapa do mesmo modal (nunca redirecionar para externo).
+
+            })();
+        </script>
+
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
