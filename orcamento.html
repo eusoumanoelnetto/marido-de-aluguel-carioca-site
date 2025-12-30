@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solicitar Orçamento — Marido de Aluguel Carioca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="bg-slate-50 text-gray-800 font-sans">
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+        <a href="/" class="group rounded-md" aria-label="Início">
+          <div class="flex items-center space-x-2">
+            <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Logo" class="h-10" />
+            <span class="text-lg font-bold text-blue-900 hidden sm:inline">Marido de Aluguel Carioca</span>
+          </div>
+        </a>
+      </nav>
+    </header>
+
+    <main class="py-12">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <div id="selected-solution" class="mb-6"></div>
+
+        <h1 class="text-2xl font-extrabold text-blue-900 mb-3">Solicitar Orçamento</h1>
+        <p class="text-gray-600 mb-6">Preencha os detalhes abaixo. Esta solicitação pode incluir a aquisição de peças sob demanda caso necessário.</p>
+
+        <form id="orcamento-form" class="bg-white p-6 rounded-xl shadow-md space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Seu nome</label>
+            <input type="text" name="nome" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Telefone ou WhatsApp</label>
+            <input type="text" name="contato" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Descrição do problema / serviço</label>
+            <textarea name="descricao" rows="4" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input id="need-part" type="checkbox" class="mt-1" />
+            <label for="need-part" class="text-sm text-gray-700">Preciso que vocês forneçam a peça</label>
+          </div>
+
+          <div id="part-details" class="hidden">
+            <label class="block text-sm font-medium text-gray-700">Modelo do computador / Observações sobre a peça</label>
+            <input id="part-info" name="part_info" type="text" placeholder="Ex: Dell Inspiron 15, ou observações" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+
+          <div class="flex justify-end gap-3">
+            <button type="button" id="cancel" class="py-2 px-4 rounded-md bg-gray-200">Cancelar</button>
+            <button type="submit" class="py-2 px-4 rounded-md bg-blue-800 text-white">Enviar solicitação</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="py-8 bg-white border-t">
+      <div class="container mx-auto px-6 text-center text-sm text-gray-600">© 2025 Marido de Aluguel Carioca</div>
+    </footer>
+
+    <script>
+      // Lê parâmetros da URL: aceita 'solucao' ou 'produto'
+      const params = new URLSearchParams(window.location.search);
+      const solucao = params.get('solucao') || params.get('produto');
+      const selectedContainer = document.getElementById('selected-solution');
+      if (solucao) {
+        selectedContainer.innerHTML = `
+          <div class="bg-white p-4 rounded-lg border border-blue-100 mb-4">
+            <div class="text-sm text-gray-600">Solução selecionada</div>
+            <div class="text-lg font-bold text-blue-900">${decodeURIComponent(solucao)}</div>
+            <div class="text-sm text-gray-600 mt-2">Esta solução pode incluir aquisição de peças sob demanda. Marque a opção abaixo caso precise que forneçamos a peça.</div>
+          </div>
+        `;
+      }
+
+      // Checkbox mostra/oculta campo adicional
+      const needPart = document.getElementById('need-part');
+      const partDetails = document.getElementById('part-details');
+      needPart.addEventListener('change', () => {
+        if (needPart.checked) {
+          partDetails.classList.remove('hidden');
+        } else {
+          partDetails.classList.add('hidden');
+        }
+      });
+
+      // Form submit: sem backend — apenas demonstração de comportamento
+      const form = document.getElementById('orcamento-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        if (solucao) data.append('solucao', solucao);
+        // Redireciona para a mesma página com query params (simula criação de orçamento)
+        const query = new URLSearchParams();
+        data.forEach((v,k) => { if (v) query.append(k,v); });
+        // Mantemos sem backend: mostra confirmação e link para WhatsApp (opcional)
+        alert('Solicitação preparada. Enviaremos o contato em breve.');
+        // Aqui não criamos backend — poderia abrir WhatsApp ou enviar para o sistema existente.
+      });
+
+      document.getElementById('cancel').addEventListener('click', () => { window.history.back(); });
+    </script>
+  </body>
+</html>

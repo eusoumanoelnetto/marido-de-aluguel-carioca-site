@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soluções — Marido de Aluguel Carioca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="bg-slate-50 text-gray-800 font-sans">
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+        <a href="/" class="group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md" aria-label="Início">
+            <div class="flex items-center space-x-2">
+                <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Logo" class="h-12 w-auto" width="48" height="48" />
+                <span class="text-xl font-bold text-blue-900 hidden sm:inline">Marido de Aluguel Carioca</span>
+            </div>
+        </a>
+
+        <div class="flex items-center space-x-4">
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="/" class="text-gray-600 hover:text-blue-800">Início</a>
+                <a href="/solucoes" class="text-blue-900 font-semibold">Soluções</a>
+            </div>
+            <a href="#" class="bg-red-600 text-white font-bold py-2 px-4 sm:px-5 rounded-lg">Baixar o App</a>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-blue-900 text-2xl p-1 rounded-md"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Soluções e Upgrades para seu Computador</h1>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Oferecemos soluções que incluem instalação e suporte técnico — pensadas para resolver problemas reais do seu computador.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Produtos / Vitrine (peças universais) -->
+          <script type="application/json" id="produtos-data">[
+            {"id":"ssd-480","title":"SSD 480GB","subtitle":"Ideal para PCs lentos","desc":"Aumenta velocidade de inicialização e carregamento até 10x. Compatível com a maioria dos PCs.","note":"Produto adquirido sob demanda"},
+            {"id":"ssd-1tb","title":"SSD 1TB","subtitle":"Espaço e velocidade","desc":"Armazenamento rápido para jogos e produtividade. Compatível com SATA/PCIe dependendo do modelo.","note":"Produto adquirido sob demanda"},
+            {"id":"nvme-1tb","title":"NVMe 1TB","subtitle":"Desempenho máximo","desc":"Leituras e gravações ultrarrápidas para workloads pesados. Verifique slot M.2 no seu PC.","note":"Produto adquirido sob demanda"},
+            {"id":"ram-8gb","title":"Memória RAM 8GB","subtitle":"Multitarefa básica","desc":"Ótimo para navegação e produtividade leve. Compatível com a maioria dos desktops e notebooks modernos.","note":"Produto adquirido sob demanda"},
+            {"id":"ram-16gb","title":"Memória RAM 16GB","subtitle":"Performance para apps pesados","desc":"Melhora performance em edição, VMs e jogos. Verifique tipos DDR3/DDR4/DDR5.","note":"Produto adquirido sob demanda"},
+            {"id":"psu-500","title":"Fonte 500W Certificada","subtitle":"Estável e eficiente","desc":"Proteção contra picos e garantia de estabilidade. Compatível com a maioria das builds básicas.","note":"Produto adquirido sob demanda"},
+            {"id":"psu-650","title":"Fonte 650W Certificada","subtitle":"Para builds mais exigentes","desc":"Potência extra para placas de vídeo e upgrades futuros.","note":"Produto adquirido sob demanda"},
+            {"id":"kit-cooler","title":"Kit Cooler + Instalação","subtitle":"Refrigeração eficiente","desc":"Melhore temperaturas e ruído com instalação profissional.","note":"Produto adquirido sob demanda"}
+          ]</script>
+
+          <!-- Cards gerados via JS para facilitar manutenção -->
+          <!-- Placeholder container onde os cards serão renderizados -->
+          <div id="produtos-grid" class="contents"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de compatibilidade -->
+    <div id="compat-modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+        <h3 id="modal-title" class="text-xl font-bold text-blue-900 mb-2">Ver compatibilidade</h3>
+        <p id="modal-sub" class="text-sm text-gray-600 mb-4">Informe o modelo do seu PC para checar compatibilidade.</p>
+        <label class="block text-sm font-medium text-gray-700">Modelo do PC</label>
+        <input id="pc-model-input" type="text" placeholder="Ex: Dell Inspiron 15 3000" class="mt-1 mb-4 w-full rounded-md border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+        <div class="flex gap-3 justify-end">
+          <button id="modal-cancel" class="py-2 px-4 rounded-md bg-gray-200">Fechar</button>
+          <button id="modal-submit" class="py-2 px-4 rounded-md bg-blue-800 text-white">Solicitar orçamento</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produtos mais utilizados -->
+    <section class="py-12 bg-slate-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-extrabold text-blue-900">Produtos mais utilizados</h2>
+          <p class="text-gray-600 mt-2">Peças universais e recomendadas — sob demanda com instalação opcional.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">SSD SATA</h3>
+            <p class="text-gray-600 text-sm mb-3">Melhora velocidade de armazenamento em máquinas com entrada SATA.</p>
+            <p class="text-sm text-gray-500 mb-4">Produto adquirido sob demanda</p>
+            <a href="/orcamento?produto=ssd-sata" class="inline-block border border-blue-800 text-blue-800 font-semibold py-2 px-3 rounded-lg">Ver compatibilidade</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Memória RAM</h3>
+            <p class="text-gray-600 text-sm mb-3">Aumente a capacidade para multitarefa e melhor resposta do sistema.</p>
+            <p class="text-sm text-gray-500 mb-4">Produto adquirido sob demanda</p>
+            <a href="/orcamento?produto=memoria-ram" class="inline-block border border-blue-800 text-blue-800 font-semibold py-2 px-3 rounded-lg">Ver compatibilidade</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Fonte Certificada</h3>
+            <p class="text-gray-600 text-sm mb-3">Fontes com certificação para maior estabilidade e proteção do hardware.</p>
+            <p class="text-sm text-gray-500 mb-4">Produto adquirido sob demanda</p>
+            <a href="/orcamento?produto=fonte-certificada" class="inline-block border border-blue-800 text-blue-800 font-semibold py-2 px-3 rounded-lg">Ver compatibilidade</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Kit Teclado + Mouse</h3>
+            <p class="text-gray-600 text-sm mb-3">Conjunto prático para setup de home office ou reposição rápida.</p>
+            <p class="text-sm text-gray-500 mb-4">Produto adquirido sob demanda</p>
+            <a href="/orcamento?produto=kit-teclado-mouse" class="inline-block border border-blue-800 text-blue-800 font-semibold py-2 px-3 rounded-lg">Ver compatibilidade</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 bg-white border-t">
+      <div class="container mx-auto px-6 text-center text-sm text-gray-600">© 2025 Marido de Aluguel Carioca</div>
+    </footer>
+
+    <script>
+      // Renderiza os cards a partir dos dados embutidos
+      const produtosData = JSON.parse(document.getElementById('produtos-data').textContent);
+      const grid = document.getElementById('produtos-grid');
+      produtosData.forEach(p => {
+        const col = document.createElement('div');
+        col.className = 'bg-white p-6 rounded-xl shadow-md';
+        col.innerHTML = `
+          <h3 class="text-lg font-bold text-blue-900 mb-1">${p.title}</h3>
+          <div class="text-sm text-gray-600 mb-2">${p.subtitle}</div>
+          <p class="text-gray-600 text-sm mb-4">${p.desc}</p>
+          <p class="text-sm text-gray-500 mb-4">${p.note}</p>
+          <div class="flex gap-3">
+            <a href="/orcamento?produto=${encodeURIComponent(p.title)}" class="inline-block bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg">Solicitar orçamento</a>
+            <button data-prod="${p.title}" class="ver-compat inline-block border border-blue-800 text-blue-800 font-semibold py-2 px-3 rounded-lg">Ver compatibilidade</button>
+          </div>
+        `;
+        grid.appendChild(col);
+      });
+
+      // Modal logic
+      const modal = document.getElementById('compat-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalSub = document.getElementById('modal-sub');
+      const pcInput = document.getElementById('pc-model-input');
+      const modalCancel = document.getElementById('modal-cancel');
+      const modalSubmit = document.getElementById('modal-submit');
+      let currentProduct = '';
+
+      document.addEventListener('click', (e) => {
+        if (e.target && e.target.matches('.ver-compat')) {
+          currentProduct = e.target.getAttribute('data-prod') || '';
+          modalTitle.textContent = `Compatibilidade — ${currentProduct}`;
+          pcInput.value = '';
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          pcInput.focus();
+        }
+      });
+
+      modalCancel.addEventListener('click', () => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      });
+
+      modalSubmit.addEventListener('click', () => {
+        const modelo = pcInput.value.trim();
+        // Redireciona para /orcamento com parâmetros para gerar orçamento
+        const url = '/orcamento?produto=' + encodeURIComponent(currentProduct) + '&modelo=' + encodeURIComponent(modelo);
+        window.location.href = url;
+      });
+
+      // Fecha modal ao clicar fora do conteúdo
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('flex');
+          modal.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
