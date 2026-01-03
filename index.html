@@ -70,9 +70,9 @@
 </head>
   <body class="bg-slate-50 text-gray-800 font-sans">
     
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm relative z-30">
       <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-        <a href="#" class="group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md" aria-label="Início, voltar ao topo">
+        <a href="/" class="group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md" aria-label="Início, voltar ao topo">
             <div class="flex items-center space-x-2">
                 <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Logo Marido de Aluguel" class="h-12 w-auto transition-transform duration-300 ease-in-out group-hover:rotate-[12deg] group-hover:scale-110" width="48" height="48" fetchPriority="high" />
                 <span class="text-xl font-bold text-blue-900 hidden sm:inline">Marido de Aluguel Carioca</span>
@@ -111,6 +111,435 @@
       </div>
     </header>
 
+    <!-- Menu de Categorias com Submenus Aprimorados -->
+    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-6">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
+                <!-- Assistência técnica -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-blue-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-blue-600">Assistência técnica</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[400px] z-50 p-8 transition-all duration-300">
+                        <div class="grid grid-cols-3 gap-8">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-blue-300">Eletrônicos</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="/solucao.html?service=Som&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Som</a></li>
+                                    <li><a href="/solucao.html?service=Câmera&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Câmera</a></li>
+                                    <li><a href="/solucao.html?service=DVD%20%2F%20Blu-Ray&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">DVD / Blu-Ray</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-blue-300">Eletrodomésticos</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="/solucao.html?service=Geladeira&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Geladeira</a></li>
+                                    <li><a href="/solucao.html?service=Microondas&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Microondas</a></li>
+                                    <li><a href="/solucao.html?service=Lava%20Roupa&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Lava Roupa</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-blue-300">Informática</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="/solucao.html?service=Computador&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Computador</a></li>
+                                    <li><a href="/solucao.html?service=Notebook&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Notebook</a></li>
+                                    <li><a href="/solucao.html?service=Impressora&category=Assistência%20Técnica" class="text-sm text-gray-600 hover:text-blue-600 hover:underline">Impressora</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aulas -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-amber-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-amber-600">Aulas</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[480px] z-50 p-8 transition-all duration-300">
+                        <div class="grid grid-cols-4 gap-8">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-amber-300">Acadêmicos</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Concursos</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Idiomas</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Educação</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-amber-300">Artes</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Pintura</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Música</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Fotografia</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Esportes</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Dança</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Yoga</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Personal</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Profissionais</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Inglês</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Excel</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-amber-600 hover:underline">Marketing</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autos -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-green-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-green-600">Autos</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[520px] z-50 p-8 transition-all duration-300">
+                        <div class="grid grid-cols-5 gap-8">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-4 pb-3 border-b-2 border-green-300">Elétrica</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Bateria</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Alternador</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Pintura</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Funilaria</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Polimento</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Vidros</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Trocas</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Insulfilm</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Mecânica</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Motor</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Freios</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Venda</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Carros</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-green-600 hover:underline">Peças</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consultoria -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-purple-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-purple-600">Consultoria</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[380px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-4 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Mídia</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Redação</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Tradução</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Negócios</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Financeira</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Contábil</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Jurídico</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Advocacia</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Contratos</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Pessoal</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Coach</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-purple-600 hover:underline">Mentoria</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design e Tecnologia -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-pink-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-50 to-pink-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-pink-600">Design e Tecnologia</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[360px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-3 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Tecnologia</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Web Dev</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Apps</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Games</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Gráfica</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Logo</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Identidade</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Áudio/Visual</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Edição Vídeo</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">Animação</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-pink-600 hover:underline">3D</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eventos -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-red-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-red-600">Eventos</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[380px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-4 gap-4">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Equipe</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Assessor</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Organizador</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Comida</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Bartender</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Buffet</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Música</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">DJ</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Banda</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Extra</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Decoração</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-600 hover:underline">Fotografia</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moda e beleza -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-rose-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-rose-50 to-rose-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-rose-600">Moda e beleza</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[360px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-3 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Beleza</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Manicure</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Pedicure</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Estética</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Cabelo</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Corte</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Coloração</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Tratamento</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Moda</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Stylist</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Costura</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-rose-600 hover:underline">Consultoria</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reformas e reparos -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-orange-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-orange-600">Reformas e reparos</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[420px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-5 gap-4">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Construção</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Arquiteto</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Pedreiro</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Instalação</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Elétrica</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Hidráulica</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Pintura</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Pintor</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Restauro</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Reparos</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Encanador</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Eletricista</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Mobiliário</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Montagem</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-orange-600 hover:underline">Carpintaria</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saúde -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-red-500 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-red-500">Saúde</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[380px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-4 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Estética</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Lifting</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Peeling</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Corpo</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Fisio</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Nutrição</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Mente</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Psicólogo</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Coach</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Família</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Pediatra</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-red-500 hover:underline">Doula</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serviços Domésticos -->
+                <div class="group relative">
+                    <a href="#" class="flex flex-col items-center gap-3 text-gray-600 hover:text-indigo-600 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-center max-w-[85px] leading-tight group-hover:text-indigo-600">Serviços Domésticos</span>
+                    </a>
+                    <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-lg shadow-2xl border border-gray-200 min-w-[360px] z-50 p-6 transition-all duration-300">
+                        <div class="grid grid-cols-3 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Casa</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Diarista</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Limpeza</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Organização</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Família</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Babá</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Cozinheira</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Motorista</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-3 pb-2 border-b border-gray-200">Pets</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Pet Sitter</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Banho</a></li>
+                                    <li><a href="#" class="text-sm text-gray-600 hover:text-indigo-600 hover:underline">Veterinário</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <main>
         <section id="hero" class="relative bg-white py-20 md:py-32 overflow-hidden">
             <div id="hero-bg" class="absolute inset-0 bg-grid-slate-200 [mask-image:linear-gradient(to_bottom,white,transparent)]" aria-hidden="true"></div>
@@ -141,6 +570,132 @@
                 </div>
             </div>
         </section>
+
+        <!-- Seção Principais Serviços -->
+        <section id="services" class="py-16 sm:py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Principais serviços pedidos</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                        Os serviços mais realizados de cada categoria
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <!-- Botão Esquerdo -->
+                    <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:bg-gray-50" aria-label="Anterior">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Container do Carrossel -->
+                    <div class="overflow-hidden mx-8">
+                        <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-out">
+                            <!-- Card 1 -->
+                            <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
+                                    <div class="h-48 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1581785110531-5662a694249a?auto=format&fit=crop&q=80&w=400" alt="Montagem de móveis" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Montagem de móveis</h3>
+                                        <a href="#" class="text-blue-600 font-bold hover:underline text-sm">Solicitar orçamento</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
+                                    <div class="h-48 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1634563187921-106f89ba43e7?auto=format&fit=crop&q=80&w=400" alt="Serviços de Diarista" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviços de Diarista</h3>
+                                        <a href="#" class="text-blue-600 font-bold hover:underline text-sm">Solicitar orçamento</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
+                                    <div class="h-48 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=400" alt="Serviço de Pedreiro" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviço de Pedreiro</h3>
+                                        <a href="#" class="text-blue-600 font-bold hover:underline text-sm">Solicitar orçamento</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
+                                    <div class="h-48 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=400" alt="Serviço de Eletricista" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviço de Eletricista</h3>
+                                        <a href="#" class="text-blue-600 font-bold hover:underline text-sm">Solicitar orçamento</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
+                                    <div class="h-48 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1581578731548-c64695c952952?auto=format&fit=crop&q=80&w=400" alt="Serviço de Pintura" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviço de Pintura</h3>
+                                        <a href="#" class="text-blue-600 font-bold hover:underline text-sm">Solicitar orçamento</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão Direito -->
+                    <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:bg-gray-50" aria-label="Próximo">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const carousel = document.getElementById('carousel-track');
+                const prevBtn = document.getElementById('carousel-prev');
+                const nextBtn = document.getElementById('carousel-next');
+                
+                let currentIndex = 0;
+                const cardWidth = 100 / 3; // 3 cards visíveis por vez (33.33% cada)
+                const totalCards = carousel.children.length;
+                const maxIndex = totalCards - 3;
+
+                function updateCarousel() {
+                    const offset = -currentIndex * (100 / 3);
+                    carousel.style.transform = `translateX(${offset}%)`;
+                }
+
+                prevBtn.addEventListener('click', function() {
+                    currentIndex = Math.max(0, currentIndex - 1);
+                    updateCarousel();
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    currentIndex = Math.min(maxIndex, currentIndex + 1);
+                    updateCarousel();
+                });
+            });
+        </script>
 
         <section id="features" class="py-16 sm:py-20 bg-slate-100">
             <div class="container mx-auto px-6">
@@ -746,6 +1301,5 @@
         animatedElements.forEach(el => observer.observe(el));
     });
     </script>
-  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

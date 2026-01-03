@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviço - Marido de Aluguel Carioca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm relative z-30">
+        <div class="container mx-auto px-4 sm:px-6 py-6 flex items-center justify-between">
+            <div class="text-2xl font-bold text-amber-600">
+                <i class="fas fa-hammer"></i> Marido de Aluguel Carioca
+            </div>
+            <nav class="hidden md:flex gap-8">
+                <a href="/" class="text-gray-600 hover:text-amber-600 transition-colors">Início</a>
+                <a href="/#servicos" class="text-gray-600 hover:text-amber-600 transition-colors">Serviços</a>
+                <a href="/#sobre" class="text-gray-600 hover:text-amber-600 transition-colors">Sobre</a>
+                <a href="/#contato" class="text-gray-600 hover:text-amber-600 transition-colors">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b border-gray-100 sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <nav class="flex items-center gap-2 text-sm text-gray-600">
+                <a href="/" class="hover:text-amber-600 transition-colors">Marido de Aluguel Carioca</a>
+                <span class="text-gray-400">›</span>
+                <span id="breadcrumb-category">Categoria</span>
+                <span class="text-gray-400">›</span>
+                <span id="breadcrumb-service" class="text-amber-600 font-semibold">Serviço</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 id="service-title" class="text-4xl sm:text-5xl font-bold text-gray-800 mb-6">
+                        Precisando de Conserto de Aparelho de Som?
+                    </h1>
+                    <p id="service-description" class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Milhares de profissionais avaliados por clientes, permitindo você negociar apenas com os melhores.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-amber-600"></i>
+                            </div>
+                            <span class="text-gray-700">Até 4 orçamentos grátis e seguros</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-star text-amber-600"></i>
+                            </div>
+                            <span class="text-gray-700">Profissionais avaliados</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-play text-amber-600"></i>
+                            </div>
+                            <span class="text-gray-700">Como funciona o Marido de Aluguel Carioca?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl p-12 h-full flex flex-col items-center justify-center">
+                        <i class="fas fa-user-circle text-amber-600 text-8xl mb-6 opacity-60"></i>
+                        <div class="space-y-4 w-full">
+                            <div>
+                                <div class="text-5xl font-bold text-amber-600">4.46</div>
+                                <div class="text-sm text-gray-600">/5</div>
+                            </div>
+                            <div class="flex justify-center gap-1">
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star-half-alt text-amber-600"></i>
+                            </div>
+                            <p class="text-gray-700 text-sm"><span id="review-count" class="font-bold">227</span> clientes avaliaram nossos profissionais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 bg-amber-50 border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="bg-yellow-300 rounded-2xl p-12">
+                <h2 id="cta-title" class="text-3xl font-bold text-gray-800 mb-8">Qual serviço de Aparelho de Som está precisando?</h2>
+                <div class="relative">
+                    <input type="text" placeholder="O que você precisa?" class="w-full px-6 py-4 rounded-lg border border-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-amber-600">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-amber-600 hover:bg-amber-700 text-white px-8 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professionals Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Avaliações de quem contratou</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100" alt="Profissional" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-bold text-gray-800">João Silva</h3>
+                            <div class="flex gap-1 text-amber-600 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Excelente profissional! Muito atencioso e prestativo. Fez um ótimo trabalho e com preço justo."</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100" alt="Profissional" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-bold text-gray-800">Maria Santos</h3>
+                            <div class="flex gap-1 text-amber-600 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Profissional muito competente. Chegou no horário, trabalho rápido e bem feito. Recomendo!"</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c006ae0f?auto=format&fit=crop&w=100&h=100" alt="Profissional" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-bold text-gray-800">Pedro Costa</h3>
+                            <div class="flex gap-1 text-amber-600 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Muito bom! Chegou conforme agendado e conseguiu resolver o problema em uma hora."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-12 bg-amber-600 text-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Pronto para começar?</h2>
+            <p class="text-xl mb-8 opacity-90">Encontre o profissional perfeito para seu serviço</p>
+            <button class="bg-white text-amber-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-lg transition-colors">
+                Ver Profissionais Disponíveis
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-white mb-4">Sobre</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Quem Somos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Carreiras</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Imprensa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Serviços</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Categorias</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Profissionais</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Avaliações</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Suporte</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Redes Sociais</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Facebook</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-sm text-center">
+                <p>&copy; 2024 Marido de Aluguel Carioca. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get service info from URL params
+        const params = new URLSearchParams(window.location.search);
+        const service = params.get('service') || 'Serviço';
+        const category = params.get('category') || 'Categoria';
+
+        // Service data mapping
+        const serviceData = {
+            'som': {
+                title: 'Precisando de Conserto de Aparelho de Som?',
+                description: 'Milhares de profissionais avaliados por clientes, permitindo você negociar apenas com os melhores.',
+                reviewCount: '227'
+            },
+            'câmera': {
+                title: 'Precisando de Conserto de Câmera?',
+                description: 'Profissionais especializados em reparo de câmeras digitais e analógicas.',
+                reviewCount: '145'
+            },
+            'dvd': {
+                title: 'Precisando de Conserto de DVD / Blu-Ray?',
+                description: 'Técnicos especializados em eletrônicos de entretenimento.',
+                reviewCount: '89'
+            },
+            'geladeira': {
+                title: 'Precisando de Conserto de Geladeira?',
+                description: 'Profissionais certificados em manutenção de eletrodomésticos.',
+                reviewCount: '312'
+            },
+            'microondas': {
+                title: 'Precisando de Conserto de Microondas?',
+                description: 'Técnicos experientes em reparo de microondas.',
+                reviewCount: '156'
+            },
+            'lava roupa': {
+                title: 'Precisando de Conserto de Lava Roupa?',
+                description: 'Profissionais especializados em máquinas de lavar.',
+                reviewCount: '278'
+            },
+            'computador': {
+                title: 'Precisando de Conserto de Computador?',
+                description: 'Técnicos de informática com ampla experiência.',
+                reviewCount: '394'
+            },
+            'notebook': {
+                title: 'Precisando de Conserto de Notebook?',
+                description: 'Profissionais especializados em laptops e notebooks.',
+                reviewCount: '267'
+            },
+            'impressora': {
+                title: 'Precisando de Conserto de Impressora?',
+                description: 'Técnicos em periféricos de informática.',
+                reviewCount: '123'
+            }
+        };
+
+        // Update page content
+        const serviceKey = service.toLowerCase();
+        const data = serviceData[serviceKey] || {
+            title: `Precisando de ${service}?`,
+            description: 'Milhares de profissionais avaliados por clientes.',
+            reviewCount: '200'
+        };
+
+        document.getElementById('service-title').textContent = data.title;
+        document.getElementById('service-description').textContent = data.description;
+        document.getElementById('breadcrumb-service').textContent = service;
+        document.getElementById('breadcrumb-category').textContent = category;
+        document.getElementById('review-count').textContent = data.reviewCount;
+        document.getElementById('cta-title').textContent = `Qual serviço de ${service} está precisando?`;
+        document.title = `${service} - Marido de Aluguel Carioca`;
+    </script>
+</body>
+</html>
