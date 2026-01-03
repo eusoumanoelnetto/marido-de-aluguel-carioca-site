@@ -120,7 +120,33 @@
 .chevron.left { transform: rotate(135deg); margin-left: 4px; }
 .chevron.right { transform: rotate(-45deg); margin-right: 4px; }
 
-/* Responsividade Básica */
+/* Responsividade para tablets e 1024px */
+@media (max-width: 1024px) {
+    .slider-container {
+        max-width: 900px;
+        padding: 0 16px;
+    }
+    
+    .section-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-header p {
+        font-size: 0.95rem;
+    }
+    
+    .card-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        display: none; /* Esconde em tablets */
+    }
+}
+
+/* Responsividade Básica para mobile */
 @media (max-width: 768px) {
     .cards-wrapper {
         flex-direction: column;

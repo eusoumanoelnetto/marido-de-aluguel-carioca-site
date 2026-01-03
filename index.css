@@ -15,3 +15,171 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Mobile Menu Styles */
+#mobile-menu {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#mobile-menu.opacity-0 {
+  visibility: hidden;
+}
+
+#mobile-menu.opacity-100 {
+  visibility: visible;
+}
+
+.mobile-category-toggle {
+  transition: all 0.2s ease;
+}
+
+.mobile-category-toggle:active {
+  background-color: rgb(243 232 255);
+}
+
+.mobile-category-toggle .fa-chevron-down {
+  transition: transform 0.3s ease;
+}
+
+.mobile-category-toggle .fa-chevron-down.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.mobile-category-content {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.mobile-category-content.hidden {
+  animation: slideUp 0.3s ease forwards;
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+}
+
+/* Responsividade para tablets e telas intermediárias (1024px) */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 920px;
+  }
+  
+  /* Ajusta padding em telas médias */
+  .container.mx-auto {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* Menu de Categorias - Reduz ícones em 1024px */
+  nav .group .w-14,
+  nav .group .h-14 {
+    width: 48px;
+    height: 48px;
+  }
+  
+  nav .group .text-2xl {
+    font-size: 1.25rem;
+  }
+  
+  /* Reduz gap dos itens do menu */
+  nav .flex.flex-wrap.justify-center {
+    gap: 1rem !important;
+  }
+  
+  nav .gap-6 {
+    gap: 1rem !important;
+  }
+  
+  nav .gap-8 {
+    gap: 1.25rem !important;
+  }
+  
+  nav .gap-10 {
+    gap: 1.5rem !important;
+  }
+  
+  /* Redimensiona fontes para não ficar gigantes */
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+  
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  /* Ajusta espaçamento de seções */
+  section {
+    @apply py-12 sm:py-16 md:py-20;
+  }
+}
+
+/* Responsividade melhorada para 768px e menores */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+  
+  .container.mx-auto {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  h1 {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+/* Responsividade para mobile (480px e menores) */
+@media (max-width: 480px) {
+  .container.mx-auto {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  h1 {
+    @apply text-xl;
+  }
+  
+  h2 {
+    @apply text-lg;
+  }
+  
+  p {
+    @apply text-xs sm:text-sm;
+  }
+}

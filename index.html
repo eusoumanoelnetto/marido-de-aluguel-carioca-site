@@ -65,6 +65,124 @@
           animation: fadeInUp 0.6s ease-out forwards;
           animation-delay: var(--animation-delay, 0s);
         }
+        
+        /* Responsividade para 1024px e tablets */
+        @media (max-width: 1024px) {
+          .container {
+            max-width: 920px;
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+          
+          h1 {
+            font-size: clamp(1.875rem, 5vw, 3rem) !important;
+          }
+          
+          h2 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem) !important;
+          }
+          
+          h3 {
+            font-size: clamp(1rem, 3vw, 1.5rem) !important;
+          }
+          
+          p {
+            font-size: clamp(0.875rem, 2vw, 1.125rem) !important;
+          }
+          
+          section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+          }
+          
+          /* Reduz ícones do menu de categorias em 1024px */
+          nav .group .w-14 {
+            width: 48px;
+            height: 48px;
+          }
+          
+          nav .group .text-2xl {
+            font-size: 1.25rem;
+          }
+          
+          nav .flex.flex-wrap {
+            gap: 1rem !important;
+          }
+          
+          nav .gap-6 {
+            gap: 1rem !important;
+          }
+          
+          nav .gap-8 {
+            gap: 1.25rem !important;
+          }
+          
+          nav .gap-10 {
+            gap: 1.5rem !important;
+          }
+          
+          /* Carrossel responsivo */
+          #carousel-prev, 
+          #carousel-next {
+            display: none;
+          }
+          
+          #carousel-track {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          
+          .flex-shrink-0 {
+            flex-shrink: 1;
+          }
+          
+          /* Ajusta margins do container */
+          .mx-8 {
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+        }
+        
+        /* Responsividade para 768px e menores */
+        @media (max-width: 768px) {
+          .container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+          
+          h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem) !important;
+          }
+          
+          h2 {
+            font-size: clamp(1.25rem, 3.5vw, 1.875rem) !important;
+          }
+          
+          .mx-8 {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+        
+        /* Mobile */
+        @media (max-width: 480px) {
+          .container {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+          
+          h1 {
+            font-size: clamp(1.25rem, 3.5vw, 1.875rem) !important;
+          }
+          
+          h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem) !important;
+          }
+          
+          p {
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem) !important;
+          }
+        }
     </style>
   <link rel="stylesheet" href="/index.css">
 </head>
@@ -100,19 +218,91 @@
         </div>
       </nav>
       
-      <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-        <div class="flex flex-col items-center space-y-4 px-4">
-           <a href="#features" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 50ms;">Funcionalidades</a>
-           <a href="#showcase" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 125ms;">O App</a>
-           <a href="#how-it-works" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 200ms;">Como Funciona</a>
-           <a href="#testimonials" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 275ms;">Depoimentos</a>
-           <a href="/solucoes" class="w-full text-gray-600 hover:text-blue-800 px-4 py-2 rounded-md transition-all duration-300 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" style="transition-delay: 350ms;">Soluções</a>
+      <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-screen bg-white overflow-y-auto transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none z-50">
+        <div class="flex flex-col h-full">
+          <!-- Header do menu -->
+          <div class="sticky top-0 bg-white border-b border-gray-200 px-4 py-4 flex justify-between items-center z-10">
+            <h2 class="text-lg font-bold text-blue-900">Menu</h2>
+            <button id="mobile-menu-close" class="text-blue-900 text-2xl p-1 rounded-md transition-all duration-200 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <!-- Navegação principal -->
+          <div class="flex-1 overflow-y-auto">
+            <div class="px-4 py-6 space-y-1">
+              <a href="#features" class="block text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600">
+                <i class="fas fa-star text-blue-600 mr-3 w-5"></i>Funcionalidades
+              </a>
+              <a href="#showcase" class="block text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600">
+                <i class="fas fa-mobile-alt text-blue-600 mr-3 w-5"></i>O App
+              </a>
+              <a href="#how-it-works" class="block text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600">
+                <i class="fas fa-tasks text-blue-600 mr-3 w-5"></i>Como Funciona
+              </a>
+              <a href="#testimonials" class="block text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600">
+                <i class="fas fa-comments text-blue-600 mr-3 w-5"></i>Depoimentos
+              </a>
+              <a href="/solucoes" class="block text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600">
+                <i class="fas fa-briefcase text-blue-600 mr-3 w-5"></i>Soluções
+              </a>
+            </div>
+
+            <!-- Divisor -->
+            <div class="border-t border-gray-200 my-4"></div>
+
+            <!-- Categorias principais em mobile -->
+            <div class="px-4 py-4">
+              <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Categorias de Serviços</h3>
+              <div class="space-y-2">
+                <button class="mobile-category-toggle w-full text-left text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600 flex justify-between items-center" data-category="assistencia">
+                  <span><i class="fas fa-tools text-blue-600 mr-3 w-5"></i>Assistência Técnica</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-category-content hidden pl-8 space-y-2 bg-blue-50 rounded-lg my-2" id="assistencia-content">
+                  <a href="/solucao.html?service=Computador" class="block text-sm text-gray-600 hover:text-blue-800 py-2 px-3 rounded hover:bg-white transition-colors">Computador</a>
+                  <a href="/solucao.html?service=Notebook" class="block text-sm text-gray-600 hover:text-blue-800 py-2 px-3 rounded hover:bg-white transition-colors">Notebook</a>
+                  <a href="/solucao.html?service=Geladeira" class="block text-sm text-gray-600 hover:text-blue-800 py-2 px-3 rounded hover:bg-white transition-colors">Geladeira</a>
+                </div>
+
+                <button class="mobile-category-toggle w-full text-left text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600 flex justify-between items-center" data-category="reformas">
+                  <span><i class="fas fa-hammer text-orange-600 mr-3 w-5"></i>Reformas e Reparos</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-category-content hidden pl-8 space-y-2 bg-orange-50 rounded-lg my-2" id="reformas-content">
+                  <a href="/solucao.html?service=Encanador" class="block text-sm text-gray-600 hover:text-orange-800 py-2 px-3 rounded hover:bg-white transition-colors">Encanador</a>
+                  <a href="/solucao.html?service=Eletricista" class="block text-sm text-gray-600 hover:text-orange-800 py-2 px-3 rounded hover:bg-white transition-colors">Eletricista</a>
+                  <a href="/solucao.html?service=Pintor" class="block text-sm text-gray-600 hover:text-orange-800 py-2 px-3 rounded hover:bg-white transition-colors">Pintor</a>
+                </div>
+
+                <button class="mobile-category-toggle w-full text-left text-gray-700 hover:text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium border-l-4 border-transparent hover:border-blue-600 flex justify-between items-center" data-category="domesticos">
+                  <span><i class="fas fa-home text-indigo-600 mr-3 w-5"></i>Serviços Domésticos</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-category-content hidden pl-8 space-y-2 bg-indigo-50 rounded-lg my-2" id="domesticos-content">
+                  <a href="/solucao.html?service=Diarista" class="block text-sm text-gray-600 hover:text-indigo-800 py-2 px-3 rounded hover:bg-white transition-colors">Diarista</a>
+                  <a href="/solucao.html?service=Limpeza" class="block text-sm text-gray-600 hover:text-indigo-800 py-2 px-3 rounded hover:bg-white transition-colors">Limpeza</a>
+                  <a href="/solucao.html?service=Organização" class="block text-sm text-gray-600 hover:text-indigo-800 py-2 px-3 rounded hover:bg-white transition-colors">Organização</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer do menu (sticky) -->
+          <div class="border-t border-gray-200 bg-white p-4 space-y-3">
+            <a href="#cta" class="block w-full bg-red-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition-all duration-300 text-center">
+              Baixar o App
+            </a>
+            <a href="https://marido-de-aluguel-carioca.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full bg-blue-800 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-900 transition-all duration-300 text-center text-sm">
+              Acessar Web App
+            </a>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- Menu de Categorias com Submenus Aprimorados -->
-    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40 hidden md:block">
         <div class="container mx-auto px-4 sm:px-6 py-6">
             <div class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
                 <!-- Assistência técnica -->
@@ -543,7 +733,7 @@
     <main>
         <section id="hero" class="relative bg-white py-20 md:py-32 overflow-hidden">
             <div id="hero-bg" class="absolute inset-0 bg-grid-slate-200 [mask-image:linear-gradient(to_bottom,white,transparent)]" aria-hidden="true"></div>
-            <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
                 <div class="animate-on-load" style="--animation-delay: 0ms;">
                   <img src="https://wngalbve.manus.space/assets/logo_marido_aluguel_3-CqPHQ69B.png" alt="Marido de Aluguel Logo" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6" width="160" height="160" fetchPriority="high" />
                 </div>
@@ -573,7 +763,7 @@
 
         <!-- Seção Principais Serviços -->
         <section id="services" class="py-16 sm:py-20 bg-white">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Principais serviços pedidos</h2>
                     <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -596,7 +786,7 @@
                             <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
                                 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
                                     <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1581785110531-5662a694249a?auto=format&fit=crop&q=80&w=400" alt="Montagem de móveis" class="w-full h-full object-cover">
+                                        <img src="/assets/moveis.jpeg" alt="Montagem de móveis" class="w-full h-full object-cover">
                                     </div>
                                     <div class="p-6 text-center">
                                         <h3 class="text-lg font-semibold text-gray-700 mb-4">Montagem de móveis</h3>
@@ -609,7 +799,7 @@
                             <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
                                 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
                                     <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1634563187921-106f89ba43e7?auto=format&fit=crop&q=80&w=400" alt="Serviços de Diarista" class="w-full h-full object-cover">
+                                        <img src="/assets/diarista.jpg" alt="Serviços de Diarista" class="w-full h-full object-cover">
                                     </div>
                                     <div class="p-6 text-center">
                                         <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviços de Diarista</h3>
@@ -622,7 +812,7 @@
                             <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3">
                                 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 h-full">
                                     <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=400" alt="Serviço de Pedreiro" class="w-full h-full object-cover">
+                                        <img src="/assets/pedreiro.jpg" alt="Serviço de Pedreiro" class="w-full h-full object-cover">
                                     </div>
                                     <div class="p-6 text-center">
                                         <h3 class="text-lg font-semibold text-gray-700 mb-4">Serviço de Pedreiro</h3>
@@ -698,7 +888,7 @@
         </script>
 
         <section id="features" class="py-16 sm:py-20 bg-slate-100">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="scroll-animate text-center mb-12">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Tudo que você precisa, em um só App</h2>
                     <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -753,7 +943,7 @@
         </section>
 
         <section id="showcase" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="scroll-animate text-center mb-12">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Moderno, Intuitivo e Completo</h2>
                     <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -835,7 +1025,7 @@
         </section>
 
         <section id="how-it-works" class="py-20 bg-slate-100">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="scroll-animate text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">Resolver nunca foi tão fácil</h2>
                     <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -888,7 +1078,7 @@
         </section>
 
         <section id="testimonials" class="py-20 bg-slate-100">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="scroll-animate text-center mb-12">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900">O que nossos clientes dizem</h2>
                     <p class="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -940,7 +1130,7 @@
         </section>
 
         <section id="cta" class="bg-blue-900 text-white">
-            <div class="container mx-auto px-6 py-20 text-center">
+            <div class="container mx-auto px-4 sm:px-6 py-20 text-center">
                 <div class="scroll-animate">
                     <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
                       Chega de dor de cabeça com reparos!
@@ -966,7 +1156,7 @@
     </main>
 
     <footer class="bg-slate-800 text-slate-400">
-        <div class="container mx-auto px-6 py-8">
+        <div class="container mx-auto px-4 sm:px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left">
                     <p class="text-lg font-bold text-white mb-2">Marido de Aluguel Carioca</p>
@@ -1053,32 +1243,63 @@
         // --- Mobile Menu ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not(.mobile-category-toggle)') : [];
+
+        function toggleMobileMenu(open) {
+          if (open) {
+            mobileMenu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden';
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon) {
+              icon.classList.remove('fa-bars');
+              icon.classList.add('fa-times');
+            }
+          } else {
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+            document.body.style.overflow = 'auto';
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon) {
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
+          }
+        }
 
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', () => {
-                const isMenuOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-                mobileMenuButton.setAttribute('aria-expanded', String(!isMenuOpen));
-                const icon = mobileMenuButton.querySelector('i');
-                if (icon) {
-                    icon.classList.toggle('fa-times', !isMenuOpen);
-                    icon.classList.toggle('fa-bars', isMenuOpen);
-                }
-                mobileMenu.classList.toggle('max-h-80', !isMenuOpen);
-                mobileMenu.classList.toggle('max-h-0', isMenuOpen);
-                mobileMenu.classList.toggle('py-4', !isMenuOpen);
-                mobileMenu.classList.toggle('opacity-100', !isMenuOpen);
-                mobileMenu.classList.toggle('opacity-0', isMenuOpen);
+                const isOpen = !mobileMenu.classList.contains('max-h-0');
+                toggleMobileMenu(!isOpen);
             });
 
-            const closeMobileMenu = () => {
-                if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
-                    mobileMenuButton.click();
-                }
-            };
+            if (mobileMenuClose) {
+              mobileMenuClose.addEventListener('click', () => toggleMobileMenu(false));
+            }
 
-            mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+            mobileNavLinks.forEach(link => {
+              link.addEventListener('click', () => toggleMobileMenu(false));
+            });
+
+            // Fechar menu ao clicar fora
+            mobileMenu.addEventListener('click', (e) => {
+              if (e.target === mobileMenu) toggleMobileMenu(false);
+            });
         }
+
+        // --- Mobile Category Toggles ---
+        const categoryToggles = document.querySelectorAll('.mobile-category-toggle');
+        categoryToggles.forEach(toggle => {
+          toggle.addEventListener('click', () => {
+            const category = toggle.getAttribute('data-category');
+            const content = document.getElementById(category + '-content');
+            const icon = toggle.querySelector('.fa-chevron-down');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+          });
+        });
 
         // --- Hero Parallax ---
         const heroBg = document.getElementById('hero-bg');
